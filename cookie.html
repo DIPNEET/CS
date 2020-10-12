@@ -1,0 +1,57 @@
+<html>
+   <head>   
+      <script type = "text/javascript">
+            var x
+            function storeCookie() {
+               if( document.myform.customer.value == "" ) {
+                  alert("Enter Name!");
+                  return;
+               }
+              value = escape(document.myform.customer.value);
+               document.cookie = "Name:" + value;
+              // document.write ("Storing Cookies ---" + "  Name:" + value );
+             
+            }
+
+            function readCookie() {
+               var allcookies = document.cookie;
+               document.write ("All Cookies : " + allcookies );
+               
+               
+               cookiearray = allcookies.split(';');
+               
+              
+               for(var i=0; i<cookiearray.length; i++) {
+                  name = cookiearray[i].split('=')[0];
+                  value = cookiearray[i].split('=')[1];
+                  document.write ("Key is: " + name + " Value: " + value);
+               }
+            }
+
+
+            function deleteCookie() {
+               var now = new Date();
+               now.setMonth( now.getMonth() - 1 );
+               cookievalue = escape(document.myform.customer.value) 
+               
+               document.cookie = "name=" + cookievalue;
+               document.cookie = "expires=" + now.toUTCString() + ";"
+               document.write("Deleting Cookies : " + "Name:" + cookievalue );
+            }
+      
+      </script>      
+   </head>
+   
+   <body>      
+      <form name = "myform" action = "">
+         Enter name: <input type = "text" name = "customer"/>
+         <input type = "button" value = "Create" onclick = "storeCookie();"/>
+         
+         <p> Click the button to see the result:</p>
+         <input type = "button" value = "Read" onclick = "readCookie()"/>
+      
+         <input type = "button" value = "Delete" onclick = "deleteCookie()"/> 
+          
+      </form>   
+   </body>
+</html>
