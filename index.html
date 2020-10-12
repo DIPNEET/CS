@@ -1,0 +1,96 @@
+<html>   
+   <head>
+      <title>DIPNEET KAUR (Form Validation)</title>     
+      <style>
+         html, body{
+              background-color:darkseagreen
+          }
+          tr{
+              color:chocolate
+          }
+          input{
+              color:darksalmon
+          }
+      </style> 
+      <script type = "text/javascript">
+        
+      
+ 
+      function validateForm() {
+      
+         if( document.form.Name.value == "" ) {
+            alert( "Please enter your name!" );
+            document.form.Name.focus() ;
+            return false;
+         }
+         if( document.form.email.value == "" ) {
+            alert( "Please enter your email!" );
+            document.form.email.focus() ;
+            return false;
+         }
+         else{
+            var emailID = document.form.email.value;
+            ap = emailID.indexOf("@");
+            dp = emailID.lastIndexOf(".");
+         
+         if (ap < 1 || ( dp - ap < 2 )) {
+            alert("Please enter correct email ID")
+            document.form.email.focus() ;
+            return false;
+         }
+         }
+         if( document.form.address.value == "" ) {
+            alert( "Please enter your Address!" );
+            document.form.address.focus() ;
+            return false;
+         }
+         if( document.form.Zip.value == "" || isNaN( document.form.Zip.value ) ||
+            document.form.Zip.value.length != 5 ) {
+            
+            alert( "Please enter correct Zipcode (******)." );
+            document.form.Zip.focus() ;
+            return false;
+         }
+        
+         return( true );
+      }
+
+    
+
+     
+      </script>      
+   </head>
+   
+   <body>
+      <form name = "form" onsubmit = "return(validateForm()  );">
+         <table cellspacing = "1" cellpadding = "1" >
+            
+            <tr>
+               <td >Name</td>
+               <td><input type = "text" name = "Name" /></td>
+            </tr>
+            
+            <tr>
+               <td >Email ID</td>
+               <td><input type = "text" name = "email" /></td>
+            </tr>
+            
+            <tr>
+                <td >Address</td>
+                <td><input type = "text" name = "address" /></td>
+             </tr>
+
+            <tr>
+               <td >Zip Code</td>
+               <td><input type = "text" name = "Zip" /></td>
+            </tr>
+            
+            <tr>
+               <td ></td>
+               <td><input type = "submit" value = "Submit" /></td>
+            </tr>
+            
+         </table>
+      </form>      
+   </body>
+</html>
